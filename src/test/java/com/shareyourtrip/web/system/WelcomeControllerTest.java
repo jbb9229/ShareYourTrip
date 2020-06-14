@@ -1,45 +1,29 @@
 package com.shareyourtrip.web.system;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.hamcrest.Matchers.is;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = WelcomeController.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class WelcomeControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private TestRestTemplate template;
 
     @Test
-    public void printWelcomeMessage() throws Exception {
-        String welcomeMessage = "Welcome Our Homepage";
+    public void welcomePage() {
+        //when
+        String body = this.template.getForObject("/", String.class);
 
-        mockMvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andExpect(content().string(welcomeMessage));
-    }
-
-    @Test
-    public void printReactiveWelcomeMessage() throws Exception {
-        String message = "Welcome Member";
-        int amount = 2;
-
-        mockMvc.perform(get("/welcomemessage")
-                            .param("message", message)
-                            .param("amount", String.valueOf(amount)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message", is(message)))
-                .andExpect(jsonPath("$.amount", is(amount)));
+        //then
+        assertThat(body).isNotNull();
     }
 
 }
