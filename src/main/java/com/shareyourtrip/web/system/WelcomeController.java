@@ -1,13 +1,26 @@
 package com.shareyourtrip.web.system;
 
+import com.shareyourtrip.web.config.auth.dto.SessionUser;
+import javax.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@RequiredArgsConstructor
 @Controller
 public class WelcomeController {
 
+    private final HttpSession httpSession;
+
     @GetMapping("/")
-    public String welcome() {
+    public String welcome(Model model) {
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
+
         return "welcome";
     }
 
