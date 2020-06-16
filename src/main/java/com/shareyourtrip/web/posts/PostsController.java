@@ -1,37 +1,40 @@
 package com.shareyourtrip.web.posts;
 
-import com.shareyourtrip.web.posts.dto.PostsReponseDTO;
-import com.shareyourtrip.web.posts.dto.PostsRequestDTO;
-import com.shareyourtrip.web.posts.dto.PostsUpdateRequestDTO;
+import com.shareyourtrip.web.posts.dto.PostsResponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-// 선언된 모든 final 필드가 포함된 생성자를 생성
 @RequiredArgsConstructor
-@RestController
+@Controller
+@RequestMapping("/posts")
 public class PostsController {
 
-    private final PostsService postsService;
+    @Autowired
+    PostsService postsService;
 
-    @PostMapping("/posts/save")
-    public Long postSave(@RequestBody PostsRequestDTO requestDTO) {
-        return postsService.postSave(requestDTO);
+    @GetMapping("/save")
+    public String postSave() {
+        return "/posts/posts-save";
     }
 
-    @PutMapping("/posts/update/{id}")
-    public Long postUpdate(@PathVariable Long id,
-                        @RequestBody PostsUpdateRequestDTO requestDTO) {
-        return postsService.postUpdate(id, requestDTO);
+    @GetMapping("/list")
+    public String postList(Model model) {
+        model.addAttribute("posts", postsService.findAllDesc());
+        return "/posts/posts-list";
     }
 
-    @GetMapping("/posts/find/{id}")
-    public PostsReponseDTO postFindByID(@PathVariable Long id) {
-        return postsService.findById(id);
+    @GetMapping("/update/{postId}")
+    public String postUpdate(@PathVariable Long postId
+                            ,Model model) {
+        PostsResponseDTO responseDTO = postsService.findById(postId);
+        model.addAttribute("post", responseDTO);
+
+        return "/posts/posts-update";
     }
 
 }

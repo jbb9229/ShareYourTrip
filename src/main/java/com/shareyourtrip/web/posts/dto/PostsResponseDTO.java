@@ -4,14 +4,14 @@ import com.shareyourtrip.web.posts.Posts;
 import lombok.Getter;
 
 @Getter
-public class PostsReponseDTO {
+public class PostsResponseDTO {
 
     private Long postId;
     private String title;
     private String content;
     private String author;
 
-    public PostsReponseDTO(Posts entity) {
+    public PostsResponseDTO(Posts entity) {
         this.postId = entity.getPostId();
         this.title = entity.getTitle();
         this.content = entity.getContent();

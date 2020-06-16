@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class PostsControllerTest {
+public class PostsApiControllerTest {
 
     @LocalServerPort
     private int port;
@@ -48,7 +48,7 @@ public class PostsControllerTest {
                                         .author("jbb")
                                         .build();
 
-        String url = "http://localhost:" + port + "/posts/save";
+        String url = "http://localhost:" + port + "/api/posts/save";
 
         //when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDTO, Long.class);
@@ -80,7 +80,7 @@ public class PostsControllerTest {
                                                                 .content(expectedContent)
                                                                 .build();
 
-        String url = "http://localhost:" + port + "/posts/update/" + updateId;
+        String url = "http://localhost:" + port + "/api/posts/update/" + updateId;
 
         HttpEntity<PostsUpdateRequestDTO> requestEntity = new HttpEntity<>(requestDTO);
 
