@@ -5,6 +5,15 @@
       <div class="col-md-6">
         <a href="/posts/save" role="button" class="btn btn-primary">New Post</a>
         <a href="/posts/list" role="button" class="btn btn-warning">Posts List</a>
+        {{#userName}}
+          Logged in as : <spran id="user">{{userName}}</spran>
+          <!-- Spring Security는 기본적으로 /logout URL을 지원한다 -->
+          <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+        {{/userName}}
+        {{^userName}}
+          <!-- logout과 마찬가지로 login URL 또한 제공 -->
+          <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+        {{/userName}}
       </div>
     </div>
   </div>
