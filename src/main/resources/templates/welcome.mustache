@@ -12,7 +12,11 @@
         {{/userName}}
         {{^userName}}
           <!-- logout과 마찬가지로 login URL 또한 제공 -->
-          <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+          <!-- Google Login -->
+          <a href="/oauth2/authorization/google" class="btn btn-primary active" role="button">Google Login</a>
+
+          <!-- Naver Login -->
+          <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
         {{/userName}}
       </div>
     </div>
