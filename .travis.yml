@@ -15,9 +15,9 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r ShareYourTrip
+  - zip -r shareyourtrip *
   - mkdir -p deploy
-  - mv ShareYourTrip.zip deploy/ShareYourTrip.zip
+  - mv shareyourtrip.zip deploy/shareyourtrip.zip
 
 deploy :
   - provider: s3
