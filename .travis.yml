@@ -30,6 +30,21 @@ deploy :
     local_dir: deploy # before deploy 에 설정한 디렉토리
     wait-until-deploed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis Environment Variables
+    secret_access_key: $AWS_SECRET_KEY # Travis Environment Variables
+
+    bucket: shareyourtrip-springboot-build
+    key: shareyourtrip.zip
+
+    bundle_type: zip
+    application: shareyourtrip-codedeploy
+
+    deployment_group: shareyourtrip-group
+
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 # CI 실행 완료 시 메일 알림
 notifications:
   email:
