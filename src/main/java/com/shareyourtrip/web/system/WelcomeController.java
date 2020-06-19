@@ -20,7 +20,7 @@ public class WelcomeController {
                         @LoginUser SessionUser user) {
 
         if (user != null) {
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("user", user);
         }
 
         return "welcome";
