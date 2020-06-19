@@ -1,0 +1,14 @@
+.dropdown-menu {
+  padding: 20px 0
+}
+
+  .dropdown-menu .profile-image {
+    width: 100%;
+    text-align: center
+  }
+
+    .dropdown-menu .profile-image img {
+      width: 50%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
