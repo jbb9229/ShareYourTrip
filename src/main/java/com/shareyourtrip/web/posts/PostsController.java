@@ -19,13 +19,13 @@ public class PostsController {
 
     @GetMapping("/save")
     public String postSave() {
-        return "/posts/posts-save";
+        return "posts/posts-save";
     }
 
     @GetMapping("/list")
     public String postList(Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
-        return "/posts/posts-list";
+        return "posts/posts-list";
     }
 
     @GetMapping("/update/{postId}")
@@ -34,7 +34,7 @@ public class PostsController {
         PostsResponseDTO responseDTO = postsService.findById(postId);
         model.addAttribute("post", responseDTO);
 
-        return "/posts/posts-update";
+        return "posts/posts-update";
     }
 
 }
