@@ -42,7 +42,7 @@
             <li><a href="/posts/save">New Post</a></li>
             <li><a href="/posts/list">Posts List</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Member <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 {{#user}}
                   <div class="profile-image">
@@ -55,11 +55,38 @@
                 {{/user}}
                 {{^user}}
                   <!-- logout과 마찬가지로 login URL 또한 제공 -->
+                  <li class="dropdown-header">Social Login</li>
                   <!-- Google Login -->
-                  <li><a href="/oauth2/authorization/google">Google Login</a></li>
+                  <li>
+                    <a href="/oauth2/authorization/google">
+                      <img src="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/social-logo/google.png">
+                      Google
+                    </a>
+                  </li>
+
+                  <!-- Facebook Login -->
+<!--                  <li>-->
+<!--                    <a href="/oauth2/authorization/facebook">-->
+<!--                      <img src="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/social-logo/Facebook.png">-->
+<!--                      Facebook-->
+<!--                    </a>-->
+<!--                  </li>-->
 
                   <!-- Naver Login -->
-                  <li><a href="/oauth2/authorization/naver">Naver Login</a></li>
+                  <li>
+                    <a href="/oauth2/authorization/naver">
+                      <img src="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/social-logo/Naver.png">
+                      Naver
+                    </a>
+                  </li>
+
+                  <!-- Kakao Login -->
+<!--                  <li>-->
+<!--                    <a href="/oauth2/authorization/kakao">-->
+<!--                      <img src="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/social-logo/Kakao.png">-->
+<!--                      Kakao-->
+<!--                    </a>-->
+<!--                  </li>-->
                 {{/user}}
               </ul>
             </li>
