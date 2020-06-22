@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LayoutController {
 
-    @GetMapping("/header")
+    @GetMapping("/headerCheck")
     public String getHeader() {
         return "/layout/header";
     }
 
-    @GetMapping("/footer")
+    @GetMapping("/footerCheck")
     public String getFooter() {
         return "/layout/footer";
     }
 
-    @GetMapping("/carousel")
+    @GetMapping("/carouselCheck")
     public String getCarousel() {
         return "/layout/carousel";
     }
