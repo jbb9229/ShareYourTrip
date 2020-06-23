@@ -1,0 +1,21 @@
+{{>layout/header}}
+{{>layout/carousel}}
+
+<div class="container marketing">
+  <h1>{{post.title}}</h1>
+  <div id="content">
+  </div>
+  <div class="button-box" align="right">
+    <a href="/" role="button" class="btn btn-warning">홈으로</a>
+    <button type="button" class="btn btn-success" id="btn-update">수정 완료</button>
+    <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#content').html({{post.content}});
+  });
+</script>
+
+{{>layout/footer}}

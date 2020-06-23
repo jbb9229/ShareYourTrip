@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 권한 관리 대상 지정
                 // /api/** URL의 접속은 USER Role을 가지고있는 사람만 가능
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile", "/posts/**", "/api/**").permitAll()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile", "/posts/list", "/api/**").permitAll()
 //                .antMatchers("/api/**").hasRole(Role.USER.name())
                 // 이외의 URL은 인증된 사용자에게만 허용
                 .anyRequest().authenticated()

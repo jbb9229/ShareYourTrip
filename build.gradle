@@ -23,6 +23,7 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
+    maven { url 'https://repo.spring.io/libs-milestone'}
 }
 
 dependencies {
@@ -34,6 +35,10 @@ dependencies {
     compile('org.projectlombok:lombok')
     compile('org.mariadb.jdbc:mariadb-java-client')
     compile('com.h2database:h2')
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '2.2.1.RELEASE'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
 }

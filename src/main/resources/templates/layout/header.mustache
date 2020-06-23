@@ -21,6 +21,8 @@
   <link rel="shotcut icon" href="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/favicon/favicon.ico" type="image/x-icon">
   <link rel="icon" href="https://shareyourtrip-static-resource.s3.ap-northeast-2.amazonaws.com/images/favicon/favicon.ico" type="image/x-icon">
 
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="navbar-wrapper">
@@ -54,7 +56,7 @@
                       {{/picture}}
                   </div>
                   <li><a>Logged in as : <spran id="user">{{name}}</spran></a></li>
-                  <li><a href="#userProfile">Profile</a></li>
+                  <li><a href="/user/profile">Profile</a></li>
                   <!-- Spring Security는 기본적으로 /logout URL을 지원한다 -->
                   <li><a href="/logout">Logout</a></li>
                 {{/user}}
