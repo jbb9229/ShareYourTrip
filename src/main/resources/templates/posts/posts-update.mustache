@@ -1,10 +1,8 @@
 {{>layout/header}}
 {{>layout/carousel}}
 
-<h1>Post About Your Trip</h1>
-
-<div class="col-md-12">
-  <div class="col-md-4">
+<div class="container marketing">
+    <h1>Modify About Your Trip</h1>
     <form>
       <div class="form-group">
         <label for="postId">글 번호</label>
@@ -24,10 +22,13 @@
         <textarea class="form-control" id="content">{{post.content}}</textarea>
       </div>
     </form>
+  <div class="button-box" align="right">
     <a href="/" role="button" class="btn btn-warning">홈으로</a>
     <button type="button" class="btn btn-success" id="btn-update">수정 완료</button>
     <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
   </div>
 </div>
 
+<!-- ckEditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
 {{>layout/footer}}

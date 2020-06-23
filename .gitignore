@@ -1,7 +1,3 @@
-# Project exclude paths
-.gradle
-.idea
-application-oauth.properties
-application-dev-db.properties
-application-real-db.properties
-/build
+.gradle/
+.idea/
+build/

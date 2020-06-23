@@ -1,27 +1,36 @@
 {{>layout/header}}
 {{>layout/carousel}}
 
-<h1>Post About Your Trip</h1>
-
-<div class="col-md-12">
-  <div class="col-md-4">
+<div class="container marketing">
+    <h1>Post About Your Trip</h1>
     <form>
-      <div class="form-gorup">
-        <label for="title">제목</label>
-        <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요"/>
-      </div>
-      <div class="form-gorup">
-        <label for="author">작성자</label>
-        <input type="text" class="form-control" id="author" placeholder="작성자를 입력하세요"/>
+      <div class="row">
+        <div class="form-gorup col-lg-8">
+          <label for="title">제목</label>
+          <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요"/>
+        </div>
+        <div class="form-gorup col-lg-4">
+          <label for="author">작성자</label>
+          {{#user}}
+            <input type="text" class="form-control" id="author" value="{{name}}" disabled/>
+          {{/user}}
+          {{^user}}
+            <input type="text" class="form-control" id="author" placeholder="작성자를 입력하세요"/>
+          {{/user}}
+        </div>
       </div>
       <div class="form-gorup">
         <label for="content">내용</label>
-        <textarea class="form-control" id="content" placeholder="내용을 입력하세요"></textarea>
+        <textarea class="form-control" id="editor" placeholder="내용을 입력하세요"></textarea>
       </div>
     </form>
+  <div class="button-box" align="right">
     <a href="/" role="button" class="btn btn-danger">취소</a>
     <button type="button" class="btn btn-success" id="btn-save">등록</button>
   </div>
 </div>
 
+<!-- ckEditor -->
+<script src="/ckeditor5/ckeditor.js"></script>
+<script src="/js/layout/ckEditorSetting2.js"></script>
 {{>layout/footer}}
