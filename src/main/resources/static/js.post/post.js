@@ -1,19 +1,3 @@
-let editor;
-
-ClassicEditor
-.create( document.querySelector('#editor'), {
-  cloudServices: {
-    tokenUrl: 'https://example.com/cs-token-endpoint',
-    uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
-  }
-})
-.then(newEditor => {
-  editor = newEditor;
-})
-.catch(error => {
-  console.log(error);
-});
-
 var main = {
   init : function() {
     var _this = this;
