@@ -15,7 +15,7 @@ var main = {
     var data = {
       title : $('#title').val(),
       author : $('#author').val(),
-      content : editor.getData()
+      content : $('#content').val()
     };
 
 
