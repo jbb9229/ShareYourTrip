@@ -12,6 +12,7 @@
         <div class="form-gorup col-lg-4">
           <label for="author">작성자</label>
           {{#user}}
+            <input type="hidden" class="form-control" id="authorId" value="{{userNum}}"/>
             <input type="text" class="form-control" id="author" value="{{name}}" disabled/>
           {{/user}}
           {{^user}}

@@ -11,12 +11,14 @@ public class PostsRequestDTO {
 
     private String title;
     private String content;
+    private Long authorId;
     private String author;
 
     @Builder
-    public PostsRequestDTO(String title, String content, String author) {
+    public PostsRequestDTO(String title, String content, Long authorId, String author) {
         this.title = title;
         this.content = content;
+        this.authorId = authorId;
         this.author = author;
     }
 
@@ -24,6 +26,7 @@ public class PostsRequestDTO {
         return Posts.builder()
                 .title(title)
                 .content(content)
+                .authorId(authorId)
                 .author(author)
                 .build();
     }

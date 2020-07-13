@@ -7,9 +7,12 @@
   <div>{{post.content}}</div>
   <div class="button-box" align="right">
     <a href="/" role="button" class="btn btn-warning">홈으로</a>
-    <button type="button" class="btn btn-success" id="btn-update">수정 완료</button>
-    <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+    {{#postCheck}}
+      <a href="/posts/update/{{postId}}" role="button" class="btn btn-success">수정</a>
+      <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+    {{/postCheck}}
   </div>
 </div>
 
+<script src="/js/posts/posts.js"></script>
 {{>layout/footer}}

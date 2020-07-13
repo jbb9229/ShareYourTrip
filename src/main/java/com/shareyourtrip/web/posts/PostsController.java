@@ -52,10 +52,10 @@ public class PostsController {
                             ,Model model
                             ,@LoginUser SessionUser user) {
         PostsResponseDTO responseDTO = postsService.findById(postId);
+        boolean isMyPost = responseDTO.getAuthorId().equals(user.getUserNum());
         model.addAttribute("post", responseDTO);
-        if (user != null) {
-            model.addAttribute("user", user);
-        }
+        model.addAttribute("postCheck", isMyPost);
+        model.addAttribute("user", user);
 
         return "posts/posts-detail";
     }
