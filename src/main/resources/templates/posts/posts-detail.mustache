@@ -2,6 +2,7 @@
 {{>layout/carousel}}
 
 <div class="container marketing">
+  <input type="hidden" class="form-control" id="postId" value="{{post.postId}}"/>
   <h1>{{post.title}}</h1>
   <div>{{post.author}}</div>
   <div>{{post.content}}</div>
@@ -14,5 +15,5 @@
   </div>
 </div>
 
-<script src="/static/js/app/posts.js"></script>
+<script src="/js/app/posts.js"></script>
 {{>layout/footer}}
