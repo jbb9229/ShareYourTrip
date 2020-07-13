@@ -32,6 +32,7 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
                                         .title(title)
                                         .content(content)
+                                        .authorId(1L)
                                         .author("jbb9229@gmail.com")
                                         .build());
 
@@ -51,6 +52,7 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()
                                     .title("Test Title")
                                     .content("Test Content")
+                                    .authorId(1L)
                                     .author("jbb")
                                     .build());
 
