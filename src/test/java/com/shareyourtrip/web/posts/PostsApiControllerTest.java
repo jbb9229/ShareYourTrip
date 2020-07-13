@@ -72,6 +72,7 @@ public class PostsApiControllerTest {
         PostsRequestDTO requestDTO = PostsRequestDTO.builder()
                                         .title(title)
                                         .content(content)
+                                        .authorId(1L)
                                         .author("jbb")
                                         .build();
 
@@ -97,6 +98,7 @@ public class PostsApiControllerTest {
         Posts savedPost = postsRepository.save(Posts.builder()
                                                     .title("Test Title")
                                                     .content("Test Content")
+                                                    .authorId(1L)
                                                     .author("jbb")
                                                     .build());
 
