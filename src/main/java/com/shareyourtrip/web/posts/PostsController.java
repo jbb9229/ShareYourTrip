@@ -1,5 +1,7 @@
 package com.shareyourtrip.web.posts;
 
+import com.shareyourtrip.web.config.auth.LoginUser;
+import com.shareyourtrip.web.config.auth.dto.SessionUser;
 import com.shareyourtrip.web.posts.dto.PostsResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,11 @@ public class PostsController {
     PostsService postsService;
 
     @GetMapping("/save")
-    public String postSave() {
+    public String postSave(@LoginUser SessionUser user
+                        ,Model model) {
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
         return "posts/posts-save";
     }
 
@@ -30,11 +36,28 @@ public class PostsController {
 
     @GetMapping("/update/{postId}")
     public String postUpdate(@PathVariable Long postId
-                            ,Model model) {
+                            ,Model model
+                            ,@LoginUser SessionUser user) {
         PostsResponseDTO responseDTO = postsService.findById(postId);
         model.addAttribute("post", responseDTO);
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
 
         return "posts/posts-update";
+    }
+
+    @GetMapping("/detail/{postId}")
+    public String postDetail(@PathVariable Long postId
+                            ,Model model
+                            ,@LoginUser SessionUser user) {
+        PostsResponseDTO responseDTO = postsService.findById(postId);
+        boolean isMyPost = responseDTO.getAuthorId().equals(user.getUserNum());
+        model.addAttribute("post", responseDTO);
+        model.addAttribute("postCheck", isMyPost);
+        model.addAttribute("user", user);
+
+        return "posts/posts-detail";
     }
 
 }

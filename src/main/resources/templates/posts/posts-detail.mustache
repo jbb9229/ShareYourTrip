@@ -1,0 +1,18 @@
+{{>layout/header}}
+{{>layout/carousel}}
+
+<div class="container marketing">
+  <h1>{{post.title}}</h1>
+  <div>{{post.author}}</div>
+  <div>{{post.content}}</div>
+  <div class="button-box" align="right">
+    <a href="/" role="button" class="btn btn-warning">홈으로</a>
+    {{#postCheck}}
+      <a href="/posts/update/{{postId}}" role="button" class="btn btn-success">수정</a>
+      <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+    {{/postCheck}}
+  </div>
+</div>
+
+<script src="/js/posts/posts.js"></script>
+{{>layout/footer}}
