@@ -5,7 +5,7 @@
   <input type="hidden" class="form-control" id="postId" value="{{post.postId}}"/>
   <h1>{{post.title}}</h1>
   <div>{{post.author}}</div>
-  <div>{{post.content}}</div>
+  <div id="content">{{post.content}}</div>
   <div class="button-box" align="right">
     <a href="/" role="button" class="btn btn-warning">홈으로</a>
     {{#postCheck}}
@@ -16,4 +16,20 @@
 </div>
 
 <script src="/js/app/posts.js"></script>
+<script async charset="utf-8"
+        src="//cdn.iframe.ly/embed.js?api_key=..."
+></script>
+<script>
+  function htmlDecode(input){
+    var e = document.createElement('textarea');
+    e.innerHTML = input;
+    // handle case of empty input
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+
+  var content = htmlDecode($('#content').html());
+  $(document).ready(function() {
+    $('#content').html(content);
+  })
+</script>
 {{>layout/footer}}

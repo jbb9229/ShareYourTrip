@@ -16,9 +16,8 @@ var main = {
       title : $('#title').val(),
       authorId : $('#authorId').val(),
       author : $('#author').val(),
-      content : $('#content').val()
+      content : myEditor.getData()
     };
-
 
     $.ajax({
       type: 'POST',
@@ -38,7 +37,7 @@ var main = {
   update : function() {
     var data = {
       title: $('#title').val(),
-      content: $('#content').val()
+      content : myEditor.getData()
     };
 
     var postId = $('#postId').val();

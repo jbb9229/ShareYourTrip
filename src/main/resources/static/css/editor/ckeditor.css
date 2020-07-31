@@ -3,7 +3,7 @@
  * Generated on Fri, 19 Jun 2020 01:26:44 GMT.
  * For more information, check out https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/content-styles.html
  */
-.ck-editor__editable {
+.ck-content{
   min-height: 75vh;
 }
 

@@ -6,8 +6,13 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,10 +49,24 @@ public class AWSS3Service {
 
     public String upload(MultipartFile file, String userEmail) throws IOException {
         String fileName = file.getOriginalFilename();
+        LocalDate today = LocalDate.now();
 
-        String saveDirectory = "images/posts/" + userEmail + "/" + fileName;
+        String saveDirectory = "images/posts/" + today + "/" + userEmail + "/" + fileName;
 
-        s3Client.putObject(new PutObjectRequest(bucket, saveDirectory, file.getInputStream(), null)
+        Matcher fileTypeMatcher = Pattern.compile("(jpg|png|jpeg|bmp|gif|tiff)").matcher(fileName);
+        String fileType = "";
+
+        while (fileTypeMatcher.find()) {
+            fileType = fileTypeMatcher.group();
+        }
+
+        ObjectMetadata metadata = new ObjectMetadata();
+
+        if (fileType.length() > 0) {
+            metadata.setContentType("image/" + fileType);
+        }
+
+        s3Client.putObject(new PutObjectRequest(bucket, saveDirectory, file.getInputStream(), metadata)
             .withCannedAcl(CannedAccessControlList.PublicRead));
         return s3Client.getUrl(bucket, saveDirectory).toString();
     }
