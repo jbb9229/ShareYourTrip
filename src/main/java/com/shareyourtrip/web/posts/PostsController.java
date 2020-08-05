@@ -2,6 +2,7 @@ package com.shareyourtrip.web.posts;
 
 import com.shareyourtrip.web.config.auth.LoginUser;
 import com.shareyourtrip.web.config.auth.dto.SessionUser;
+import com.shareyourtrip.web.posts.dto.PostsReadRequestDTO;
 import com.shareyourtrip.web.posts.dto.PostsResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class PostsController {
 
     @Autowired
     PostsService postsService;
+
+    @Autowired
+    PostsReadService readService;
 
     @GetMapping("/save")
     public String postSave(@LoginUser SessionUser user
@@ -56,6 +60,13 @@ public class PostsController {
         model.addAttribute("post", responseDTO);
         model.addAttribute("postCheck", isMyPost);
         model.addAttribute("user", user);
+
+        PostsReadRequestDTO requestDTO = new PostsReadRequestDTO().builder()
+                                                                  .postId(postId)
+                                                                  .userNum(user.getUserNum())
+                                                                  .build();
+
+        readService.postReadSave(requestDTO);
 
         return "posts/posts-detail";
     }
